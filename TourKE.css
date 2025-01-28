@@ -88,6 +88,7 @@ body {
 .explore h2 {
     margin-bottom: 20px;
     font-size: 1.5rem;
+    color: #f8f9fa;
 }
 
 .explore-icons {
@@ -113,7 +114,64 @@ body {
 
 .icon p {
     font-size: 0.9rem;
-    color: #333;
+    color: #4cd137;
+}
+/* Featured Destinations Section */
+.featured-destinations {
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+    text-align: left;
+}
+
+/* Featured Destinations Section */
+.featured-destinations {
+    padding: 40px 20px;
+    background-color: #f0e68c;
+    text-align: left;
+}
+
+.featured-destinations h4 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: left;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.destination-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.icon {
+    text-align: center;
+    max-width: 100px; /* Smaller container width */
+    padding: 10px; /* Reduced padding */
+    background-color: #091f8b; /* Custom background color */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease; /* Hover effect */
+    margin: 10px auto; /* Adds space around each icon */
+}
+
+.icon:hover {
+    transform: scale(1.05); /* Slight enlargement on hover */
+}
+
+.icon img {
+    width: 60px; /* Smaller icon size */
+    height: 60px;
+    border-radius: 50%; /* Circular icons */
+}
+
+.icon p {
+    margin-top: 5px; /* Space between image and text */
+    font-size: 0.8rem; /* Slightly smaller text */
+    color: #00a8ff;
 }
 
 /* Footer */
