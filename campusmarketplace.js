@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const showLoginLink = document.getElementById("show-login");
     const logoutButton = document.getElementById("logout-button");
     const productList = document.getElementById("product-list");
+    const productDetails = document.getElementById("product-details");
 
     // Simulated product data (replace with database/API later)
     let products = [
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to load products dynamically
     function loadProducts() {
+        if (!productList) return;
         productList.innerHTML = ""; // Clear previous content
         products.forEach((product, index) => {
             const productCard = document.createElement("div");
@@ -47,18 +49,26 @@ document.addEventListener("DOMContentLoaded", function () {
         viewProductDetails(index);
     }
 
-    // Function to simulate viewing product details
+    // Function to display product details
     function viewProductDetails(index) {
         const product = products[index];
-        alert(`Viewing details for: ${product.name} - ${product.price}`);
+        if (!productDetails) return;
+        productDetails.innerHTML = `
+            <h2>${product.name}</h2>
+            <img src="${product.image}" alt="${product.name}">
+            <p>Price: ${product.price}</p>
+        `;
+        productDetails.classList.remove("hidden");
     }
 
     // Check if user is already logged in (simulate session)
     function checkLoginStatus() {
         if (localStorage.getItem("userLoggedIn") === "true") {
-            authSection.classList.add("hidden");
-            dashboard.classList.remove("hidden");
-            loadProducts(); // Load products if logged in
+            if (authSection) authSection.classList.add("hidden");
+            if (dashboard) {
+                dashboard.classList.remove("hidden");
+                loadProducts(); // Load products if logged in
+            }
         }
     }
     checkLoginStatus();
@@ -66,8 +76,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Show Signup Form
     if (showSignupLink) {
         showSignupLink.addEventListener("click", () => {
-            loginBox.classList.add("hidden");
-            signupBox.classList.remove("hidden");
+            if (loginBox) loginBox.classList.add("hidden");
+            if (signupBox) signupBox.classList.remove("hidden");
             document.getElementById("signup-form").reset(); // Clear signup form
         });
     }
@@ -75,8 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Show Login Form
     if (showLoginLink) {
         showLoginLink.addEventListener("click", () => {
-            signupBox.classList.add("hidden");
-            loginBox.classList.remove("hidden");
+            if (signupBox) signupBox.classList.add("hidden");
+            if (loginBox) loginBox.classList.remove("hidden");
             document.getElementById("login-form").reset(); // Clear login form
         });
     }
@@ -86,10 +96,17 @@ document.addEventListener("DOMContentLoaded", function () {
     if (loginForm) {
         loginForm.addEventListener("submit", (e) => {
             e.preventDefault();
-            localStorage.setItem("userLoggedIn", "true"); // Simulate login session
-            authSection.classList.add("hidden");
-            dashboard.classList.remove("hidden");
-            loadProducts();
+            let email = document.getElementById("login-email").value;
+            let password = document.getElementById("login-password").value;
+
+            if (email === "test@example.com" && password === "password123") { // Dummy check
+                localStorage.setItem("userLoggedIn", "true");
+                if (authSection) authSection.classList.add("hidden");
+                if (dashboard) dashboard.classList.remove("hidden");
+                loadProducts();
+            } else {
+                alert("Invalid credentials! Please try again.");
+            }
         });
     }
 
@@ -97,8 +114,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (logoutButton) {
         logoutButton.addEventListener("click", () => {
             localStorage.removeItem("userLoggedIn");
-            dashboard.classList.add("hidden");
-            authSection.classList.remove("hidden");
+            if (dashboard) dashboard.classList.add("hidden");
+            if (authSection) authSection.classList.remove("hidden");
         });
     }
 
@@ -108,8 +125,8 @@ document.addEventListener("DOMContentLoaded", function () {
         signupForm.addEventListener("submit", (e) => {
             e.preventDefault();
             alert("Signup successful! Redirecting to login...");
-            signupBox.classList.add("hidden");
-            loginBox.classList.remove("hidden");
+            if (signupBox) signupBox.classList.add("hidden");
+            if (loginBox) loginBox.classList.remove("hidden");
         });
     }
 });
