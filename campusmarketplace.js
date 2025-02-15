@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchButton = document.querySelector(".search-btn");
 
     // Simulated product data (replace with database/API later)
-    let products = [
+    const products = [
         { name: "iPhone 14 Pro", price: "Ksh 28,399.00", image: "iphone.jpg" },
         { name: "HP EliteBook", price: "Ksh 17,999.00", image: "laptop.jpg" },
         { name: "Study Table", price: "Ksh 700", image: "table.jpg" },
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function handleViewItemClick() {
-        let index = this.getAttribute("data-index");
+        const index = this.getAttribute("data-index");
         viewProductDetails(index);
     }
 
@@ -61,82 +61,65 @@ document.addEventListener("DOMContentLoaded", function () {
             authSection.classList.add("hidden");
             dashboard.classList.remove("hidden");
             loadProducts(); // Load products if logged in
+        } else {
+            authSection.classList.remove("hidden");
+            dashboard.classList.add("hidden");
         }
     }
     checkLoginStatus();
 
     // Show Signup Form
-    if (showSignupLink) {
-        showSignupLink.addEventListener("click", () => {
-            loginBox.classList.add("hidden");
-            signupBox.classList.remove("hidden");
-            document.getElementById("signup-form").reset(); // Clear signup form
-        });
-    }
+    showSignupLink?.addEventListener("click", () => {
+        loginBox.classList.add("hidden");
+        signupBox.classList.remove("hidden");
+        document.getElementById("signup-form").reset(); // Clear signup form
+    });
 
     // Show Login Form
-    if (showLoginLink) {
-        showLoginLink.addEventListener("click", () => {
-            signupBox.classList.add("hidden");
-            loginBox.classList.remove("hidden");
-            document.getElementById("login-form").reset(); // Clear login form
-        });
-    }
+    showLoginLink?.addEventListener("click", () => {
+        signupBox.classList.add("hidden");
+        loginBox.classList.remove("hidden");
+        document.getElementById("login-form").reset(); // Clear login form
+    });
 
     // Handling Login
     const loginForm = document.getElementById("login-form");
-    if (loginForm) {
-        loginForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            localStorage.setItem("userLoggedIn", "true"); // Simulate login session
-            authSection.classList.add("hidden");
-            dashboard.classList.remove("hidden");
-            loadProducts();
-        });
-    }
+    loginForm?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        localStorage.setItem("userLoggedIn", "true"); // Simulate login session
+        checkLoginStatus();
+    });
 
     // Handling Logout
-    if (logoutButton) {
-        logoutButton.addEventListener("click", () => {
-            localStorage.removeItem("userLoggedIn");
-            dashboard.classList.add("hidden");
-            authSection.classList.remove("hidden");
-        });
-    }
+    logoutButton?.addEventListener("click", () => {
+        localStorage.removeItem("userLoggedIn");
+        checkLoginStatus();
+    });
 
     // Handling Signup
     const signupForm = document.getElementById("signup-form");
-    if (signupForm) {
-        signupForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            alert("Signup successful! Redirecting to login...");
-            signupBox.classList.add("hidden");
-            loginBox.classList.remove("hidden");
-        });
-    }
+    signupForm?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Signup successful! Redirecting to login...");
+        signupBox.classList.add("hidden");
+        loginBox.classList.remove("hidden");
+    });
 
     // Search Functionality
     function searchProducts() {
-        const query = searchInput.value.trim().toLowerCase();
-        const productCards = document.querySelectorAll(".product-card");
-
-        productCards.forEach(card => {
+        const query = searchInput?.value.trim().toLowerCase() || "";
+        document.querySelectorAll(".product-card").forEach(card => {
             const productName = card.querySelector("h3").textContent.toLowerCase();
             card.style.display = productName.includes(query) ? "block" : "none";
         });
     }
 
     // Attach search event listeners
-    if (searchButton) {
-        searchButton.addEventListener("click", searchProducts);
-    }
-
-    if (searchInput) {
-        searchInput.addEventListener("keypress", function (event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                searchProducts();
-            }
-        });
-    }
+    searchButton?.addEventListener("click", searchProducts);
+    searchInput?.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            searchProducts();
+        }
+    });
 });
