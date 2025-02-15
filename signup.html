@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Campus Marketplace</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0b0e11;
+            color: #eaecef;
+            padding: 20px;
+        }
+        .signup-container {
+            background: #161a1e;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            width: 400px;
+            text-align: center;
+        }
+        .signup-container h2 {
+            margin-bottom: 25px;
+            color: #fcd535;
+            font-size: 26px;
+            font-weight: bold;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #eaecef;
+            font-size: 16px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #23272a;
+            color: #eaecef;
+            font-size: 16px;
+        }
+        .form-group select:focus, .form-group input:focus {
+            outline: 2px solid #fcd535;
+        }
+        .submit-btn {
+            width: 100%;
+            background: #fcd535;
+            border: none;
+            padding: 14px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            color: #000;
+            transition: 0.3s;
+        }
+        .submit-btn:hover {
+            background: #e1c30d;
+        }
+        .terms {
+            font-size: 14px;
+            margin-top: 12px;
+        }
+        .terms a {
+            color: #fcd535;
+            text-decoration: none;
+        }
+        .login-link {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        .login-link a {
+            color: #fcd535;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Create Account</h2>
+        <form>
+            <div class="form-group">
+                <label>Campus Name</label>
+                <input list="campuses" placeholder="Search or select your campus" required>
+                <datalist id="campuses">
+                    <option value="Murang'a University of Technology">
+                    <option value="Kenyatta University">
+                    <option value="Kabianga University">
+                    <option value="Technical University of Kenya"></option>
+                </datalist>
+            </div>
+            <div class="form-group">
+                <label>Student's Name</label>
+                <input type="text" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label>Registration Number</label>
+                <input type="text" placeholder="e.g SC201/3034/2002" pattern="[A-Za-z]{2}\d{3}/\d{4}/\d{4}" required>
+            </div>
+            <div class="form-group">
+                <label>Personal Email</label>
+                <input type="email" placeholder="Enter your personal email" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" placeholder="Enter your password" required>
+            </div>
+            <div class="form-group">
+                <label>Re-enter Password</label>
+                <input type="password" placeholder="Re-enter your password" required>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" required> I agree to the <a href="#">Terms and Conditions</a>
+            </div>
+            <button type="submit" class="submit-btn">Sign Up</button>
+        </form>
+        <div class="login-link">
+            Already have an account? <a href="login.html">Login</a>
+        </div>
+    </div>
+</body>
+</html>

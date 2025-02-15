@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchButton = document.querySelector(".search-btn");
 
     // Simulated product data (replace with database/API later)
-    const products = [
+    let products = [
         { name: "iPhone 14 Pro", price: "Ksh 28,399.00", image: "iphone.jpg" },
         { name: "HP EliteBook", price: "Ksh 17,999.00", image: "laptop.jpg" },
         { name: "Study Table", price: "Ksh 700", image: "table.jpg" },
@@ -22,6 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to load products dynamically
     function loadProducts(filteredProducts = products) {
         productList.innerHTML = ""; // Clear previous content
+        if (filteredProducts.length === 0) {
+            productList.innerHTML = "<p>No products found.</p>";
+            return;
+        }
         filteredProducts.forEach((product, index) => {
             const productCard = document.createElement("div");
             productCard.classList.add("product-card");
@@ -45,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function handleViewItemClick() {
-        const index = this.getAttribute("data-index");
+        let index = this.getAttribute("data-index");
         viewProductDetails(index);
     }
 
@@ -114,10 +118,10 @@ document.addEventListener("DOMContentLoaded", function () {
         loadProducts(filteredProducts);
     }
 
-    // Attach search event listeners
-    searchButton?.addEventListener("click", () => {
+    // Attach search event listeners (Click + Enter key)
+    searchButton?.addEventListener("click", function (e) {
+        e.preventDefault();
         searchProducts();
-        searchInput.focus(); // Ensures input remains active after clicking search
     });
 
     searchInput?.addEventListener("keypress", function (event) {
@@ -127,8 +131,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Improve pointer interactions on search button
+    // Fix pointer interaction for search button (Hover & Click)
     if (searchButton) {
-        searchButton.style.cursor = "pointer";
+        searchButton.style.cursor = "pointer"; // Ensure pointer changes to hand
+        searchButton.style.transition = "0.2s"; // Smooth effect
+
+        searchButton.addEventListener("mouseover", () => {
+            searchButton.style.boxShadow = "0px 4px 6px rgba(0, 0, 0, 0.2)";
+            searchButton.style.opacity = "0.9";
+        });
+
+        searchButton.addEventListener("mouseout", () => {
+            searchButton.style.boxShadow = "none";
+            searchButton.style.opacity = "1";
+        });
+
+        searchButton.addEventListener("mousedown", () => {
+            searchButton.style.transform = "scale(0.95)";
+        });
+
+        searchButton.addEventListener("mouseup", () => {
+            searchButton.style.transform = "scale(1)";
+        });
     }
 });
