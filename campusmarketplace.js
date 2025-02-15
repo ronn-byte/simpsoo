@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     // Function to load products dynamically
-    function loadProducts() {
+    function loadProducts(filteredProducts = products) {
         productList.innerHTML = ""; // Clear previous content
-        products.forEach((product, index) => {
+        filteredProducts.forEach((product, index) => {
             const productCard = document.createElement("div");
             productCard.classList.add("product-card");
             productCard.innerHTML = `
@@ -108,18 +108,27 @@ document.addEventListener("DOMContentLoaded", function () {
     // Search Functionality
     function searchProducts() {
         const query = searchInput?.value.trim().toLowerCase() || "";
-        document.querySelectorAll(".product-card").forEach(card => {
-            const productName = card.querySelector("h3").textContent.toLowerCase();
-            card.style.display = productName.includes(query) ? "block" : "none";
-        });
+        const filteredProducts = products.filter(product =>
+            product.name.toLowerCase().includes(query)
+        );
+        loadProducts(filteredProducts);
     }
 
     // Attach search event listeners
-    searchButton?.addEventListener("click", searchProducts);
+    searchButton?.addEventListener("click", () => {
+        searchProducts();
+        searchInput.focus(); // Ensures input remains active after clicking search
+    });
+
     searchInput?.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
             searchProducts();
         }
     });
+
+    // Improve pointer interactions on search button
+    if (searchButton) {
+        searchButton.style.cursor = "pointer";
+    }
 });
