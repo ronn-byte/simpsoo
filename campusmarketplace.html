@@ -1,106 +1,97 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campus Marketplace Login</title>
-    <link rel="stylesheet" href="campusmarketplace.css"
-    <title>background-image</title>
-    <style>
-        /* general styling */
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-image: url('https://imgs.search.brave.com/ySW5Id8LDBsQhQFMTrERiuiEdgEf4EUjZzzN30czRi0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hZnJp/Y2Etc2Nob29sLWJ1/Y2tldDMuczMuYW1h/em9uYXdzLmNvbS9z/dGF0aWMvaW1nL3Nj/aG9vbC8yMDIyLzAx/LzIyL211cmFuZ2F1/bmkuanBn');
-            background-size: cover;
-            background-position: center;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 350px;
-            background: rgb(255, 255, 255, 0.9);
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgb(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        input,button {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        button {
-            background: #4ca44c;
-            color: whitesmoke;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #45a049;
-        }
-
-        .divider {
-            margin: 10px 0;
-            font-size: 14px;
-            color: brown;
-        }
-
-        a {
-            color: #007b7f;
-            cursor: pointer;
-            text-decoration: underline;
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
+    <title>Campus Marketplace</title>
+    <link rel="stylesheet" href="campusmarketplace.css">
 </head>
 <body>
-    <!--Login section-->
-    <section id="login-section" class="container">
-        <h2>Campus Marketplace: Shop & Sell</h2>
-        <form id="login-form">
-            <input type="email" id="email" placeholder="Enter your email" required>
-            <button type="submit">Login</button>
-        </form>
-        <div class="divider">OR</div>
-        <button class="google-login">Login with Google</button>
-            <button class="Phone-login">Login with Phone (OTP)</button>
-            <p class="VIP-mode">Campus VIP Mode Available</p>
-            <p>Don't have an account? <a id="show-signup">Sign up</a></p>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <img src="https://media.canva.com/v2/files/uri:ifs%3A%2F%2FM%2Ffa239568-da01-4958-b8f2-1ccf50d622ea?csig=AAAAAAAAAAAAAAAAAAAAALgZ_zMRotFdWhLMrDZVG5CJhvvefgWuIOaGe5MFMY1N&exp=1739652749&signer=media-rpc&token=AAIAAU0AJGZhMjM5NTY4LWRhMDEtNDk1OC1iOGYyLTFjY2Y1MGQ2MjJlYQAAAAABlQtiVsjaL8lwQIZd_oUVeKmL0fpv5zUj_A07aylyMUXbgVkC5w" alt="Campus Marketplace Logo">
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="Search for items...">
+            <button class="search-btn">Search</button>
+        </div>
+
+        <div class="auth-buttons">
+            <a href="login.html" class="login">Login</a>
+            <a href="signup.html" class="signup">Sign Up</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Buy & Sell on Campus</h1>
+            <p>Find great deals on items from fellow students.</p>
+            <a href="#listings" class="cta-button">Browse Listings</a>
+        </div>
     </section>
 
-    <!--Signup section -->
-    <section id="signup-section" class="container hidden">
-        <h2> Campus Marketplace Sign up</h2>
-            <form id="signup-form">
-                <input type="name" id="name" placeholder="Enter your full name" required>
-                <input type="email" id="email" placeholder="Email @ address" required>
-                <input type="password" id="RegestrationNo" placeholder="Enter your RegestrationNo" required>
-                <input type="tel" id="phone" pattern="[0-9]{10}" placeholder="Enter your phone No." required>
-                <input type="password" id="password" placeholder="Enter a valid password" required>
-                <button type="submit">Sign up</button>
-            </form>
-            <p>Already have an account? <a id="show-login">Login</a></p>
+    <!-- Category Navigation -->
+    <nav class="category-nav">
+        <ul>
+            <li><a href="#">Electronics</a></li>
+            <li><a href="#">Books</a></li>
+            <li><a href="#">Clothing</a></li>
+            <li><a href="#">Furniture</a></li>
+            <li><a href="#">Accessories</a></li>
+        </ul>
+    </nav>
+
+    <!-- Product Listings -->
+    <section class="product-listings" id="listings">
+        <h2>Featured Products</h2>
+        <div class="product-grid">
+            <!-- Sample Product Card -->
+            <div class="product-card">
+                <img src="https://choiceiow.co.uk/wp-content/uploads/2015/07/SOL_4ft6_BED_june_2012.jpg" alt="Product Image">
+                <h3>4x6 Bed</h3>
+                <p class="price">$20</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://i5.walmartimages.com/asr/46e4e79b-7bd7-4279-8337-6256dfe5ad78_1.93edbfcf20424e848d07e685a4a0e2e1.jpeg?odnHeight=576&odnWidth=576&odnBg=FFFFFF" alt="Product Image">
+                <h3>Dell Laptop</h3>
+                <p class="price">$350</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6009/6009897_sd.jpg" alt="Product Image">
+                <h3>iPhone 12</h3>
+                <p class="price">$600</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://th.bing.com/th/id/R.6d5032a6fbbd2dfa5bbabce6ff069370?rik=7OlH7jpsS650Fg&pid=ImgRaw&r=0" alt="Product Image">
+                <h3>Computer Science Books</h3>
+                <p class="price">$15</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
     </section>
 
-    <!--Dashboard-->
-    <section id="dashboard-section" class="container hidden">
-        <h2>Welcome to campus Marketplace</h2>
-        <p>Successful Login</p>
-        <button id="Logout-button">Logout</button>
-    </section>
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Campus Marketplace. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </footer>
+
     <script src="campusmarketplace.js"></script>
 </body>
 </html>
