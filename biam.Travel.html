@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Biam.Travel</title>
   <style>
-    /* Universal Reset */
     * {
       margin: 0;
       padding: 0;
@@ -153,26 +152,33 @@
     }
     
     .btns button {
-      padding: 0.5rem 2rem;
+      padding: 0.7rem 2.5rem;
       font-size: 1rem;
       background-color: transparent;
       outline: none;
       border: 2px solid #FAF3E0;
       border-radius: 2rem;
       cursor: pointer;
-      transition: 0.3s;
+      transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
       color: #FAF3E0;
     }
     
     button.read-more {
-      background-color: #F4A460;
-      border-color: #F4A460;
       color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    button.read-more:hover {
+        transform: translateY(-3px);
+        background-color: #e09458;
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
     }
     
     button.our-blogs:hover {
+      transform: translateY(-3px);
       background-color: #F4A460;
       color: #fff;
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
     }
     
     .chevrons {
@@ -228,7 +234,7 @@
     }
     
     .container-right form input[type="submit"] {
-      background-color: #F4A460;
+      background-color: #020d0f;
       color: #fff;
       border: none;
       cursor: pointer;
@@ -259,7 +265,7 @@
         <li><a href="#">Contact Us</a></li>
       </ul>
       <div class="search-box">
-        <input type="search" name="search" id="search" placeholder="Search for destination" />
+        <input type="search" name="search" id="search" placeholder="Search" />
         <i class="ri-search-line"></i>
       </div>
     </nav>
