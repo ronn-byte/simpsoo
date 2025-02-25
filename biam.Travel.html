@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biam.Travel</title>
+  <style>
+    /* Universal Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+    
+    body {
+      background: url('https://imgs.search.brave.com/7rzWuBJHYOBFt4PO2F5z9Uv6pTzxAdEmLXarDqiXxGU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zbmNk/bi5jb20vaW1hZ2Vj/YWNoZS9kYi9pZC84/MTY3MDYvNDM1MDc5/dC5qcGc') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: #FAF3E0; /* Off-white for text */
+      position: relative;
+    }
+    
+    /* Overlay for enhanced readability */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: -1;
+    }
+    
+    /* Navigation Styles */
+    header nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      position: fixed;
+      width: 100%;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+    }
+    
+    .nav-logo a {
+      font-size: 32px;
+      color: #F4A460; /* SandyBrown */
+      text-decoration: none;
+      font-weight: 800;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      position: relative;
+      font-size: 18px;
+      color: #FAF3E0;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 2px 0;
+    }
+    
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: #F4A460;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    .search-box {
+      padding: 0.5rem 0;
+      border-bottom: 2px solid #FAF3E0;
+    }
+    
+    .search-box input {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      color: #FAF3E0;
+      font-size: 16px;
+    }
+    
+    .search-box input::placeholder {
+      color: #FAF3E0;
+    }
+    
+    .search-box i {
+      color: #FAF3E0;
+      cursor: pointer;
+    }
+    
+    /* Main Container */
+    main.container {
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      padding: 2rem;
+      padding-top: 100px; /* To avoid overlap with fixed nav */
+    }
+    
+    .container-left, .container-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    
+    .container-left .content {
+      max-width: 500px;
+      display: grid;
+      gap: 1rem;
+    }
+    
+    .content h1 {
+      font-size: 4rem;
+      line-height: 4rem;
+      color: #FAF3E0;
+      font-weight: 700;
+    }
+    
+    .content p {
+      color: #FAF3E0;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+    
+    .btns {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .btns button {
+      padding: 0.5rem 2rem;
+      font-size: 1rem;
+      background-color: transparent;
+      outline: none;
+      border: 2px solid #FAF3E0;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: 0.3s;
+      color: #FAF3E0;
+    }
+    
+    button.read-more {
+      background-color: #F4A460;
+      border-color: #F4A460;
+      color: #fff;
+    }
+    
+    button.our-blogs:hover {
+      background-color: #F4A460;
+      color: #fff;
+    }
+    
+    .chevrons {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+      font-size: 1.5rem;
+    }
+    
+    /* Form Section */
+    .container-right {
+      justify-content: center;
+    }
+    
+    .container-right form {
+      background-color: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      padding: 50px 35px;
+      width: 100%;
+      max-width: 430px;
+    }
+    
+    .container-right form h4 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    
+    .container-right form .form-group {
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .container-right form label {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+    
+    .container-right form input[type="date"],
+    .container-right form input[type="submit"] {
+      padding: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      font-size: 1rem;
+    }
+    
+    .container-right form input[type="date"] {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #FAF3E0;
+    }
+    
+    .container-right form input[type="submit"] {
+      background-color: #F4A460;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 1rem;
+    }
+    
+    .container-right form input[type="submit"]:hover {
+      background-color: #e09458;
+    }
+    
+    footer {
+      padding: 2rem;
+      text-align: center;
+      color: #FAF3E0;
+      background: rgba(0, 0, 0, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-logo"><a href="#">Biam.Travel</a></div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+      <div class="search-box">
+        <input type="search" name="search" id="search" placeholder="Search for destination" />
+        <i class="ri-search-line"></i>
+      </div>
+    </nav>
+  </header>
+  
+  <main class="container">
+    <section class="container-left">
+      <div class="content">
+        <h1>
+          Discovering <br /> Kenya Wildlife.
+        </h1>
+        <p>
+          Enjoy an unforgettable experience with us. From white sandy beaches to majestic mountains, we are ready to design your dream trip. Discover exciting adventures, stunning natural beauty, and memorable moments that you will cherish for a lifetime.
+        </p>
+        <div class="btns">
+          <button class="read-more">Read More</button>
+          <button class="our-blogs">Our Blogs</button>
+        </div>
+        <div class="chevrons">
+          <span class="left-chevrons">
+            <i class="ri-arrow-left-s-line"></i>
+          </span>
+          <span class="right-chevrons">
+            <i class="ri-arrow-right-s-line"></i>
+          </span>
+        </div>
+      </div>
+    </section>
+  
+    <section class="container-right">
+      <form>
+        <h4>Where do you want to go?</h4>
+        <div class="form-group">
+          <label for="date">Date:</label>
+          <input type="date" name="date" id="date" required />
+        </div>
+        <input class="submit-travel" type="submit" value="Check Travel Package" />
+      </form>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2025 Biam.Travel. All rights reserved.</p>
+  </footer>
+</body>
+</html>
