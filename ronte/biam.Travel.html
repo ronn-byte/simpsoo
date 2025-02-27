@@ -20,7 +20,7 @@
       background: url('https://imgs.search.brave.com/7rzWuBJHYOBFt4PO2F5z9Uv6pTzxAdEmLXarDqiXxGU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zbmNk/bi5jb20vaW1hZ2Vj/YWNoZS9kYi9pZC84/MTY3MDYvNDM1MDc5/dC5qcGc') no-repeat center center fixed;
       background-size: cover;
       font-family: Arial, sans-serif;
-      color: #FAF3E0; /* Off-white for text */
+      color: hsl(44, 95%, 37%); /* Off-white for text */
       position: relative;
     }
     
@@ -278,7 +278,7 @@
           Discovering <br /> Kenya Wildlife.
         </h1>
         <p>
-          Enjoy an unforgettable experience with us. From white sandy beaches to majestic mountains, we are ready to design your dream trip. Discover exciting adventures, stunning natural beauty, and memorable moments that you will cherish for a lifetime.
+          Enjoy an unforgettable experience with us.From white sandy beaches to majestic mountains, we are ready to design your dream trip. Discover exciting adventures, stunning natural beauty, and memorable moments that you will cherish for a lifetime.
         </p>
         <div class="btns">
           <button class="read-more">Read More</button>
@@ -299,6 +299,8 @@
       <form>
         <h4>Where do you want to go?</h4>
         <div class="form-group">
+          <label for="location">Location</label>
+          <input type="text" name="location" id="search" required/>
           <label for="date">Date:</label>
           <input type="date" name="date" id="date" required />
         </div>
